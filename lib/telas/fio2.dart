@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Proteinuria24hPage extends StatefulWidget {
-  const Proteinuria24hPage({super.key});
+class Fio2Page extends StatefulWidget {
+  const Fio2Page({super.key});
 
   @override
-  State<Proteinuria24hPage> createState() => _Proteinuria24hPageState();
+  State<Fio2Page> createState() => _Fio2PageState();
 }
 
-class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
+class _Fio2PageState extends State<Fio2Page> {
   final TextEditingController _volumeController = TextEditingController();
-  final TextEditingController _concentrationController =
-      TextEditingController();
 
   double? _resultado;
 
   void _calcular() {
     final volume = double.tryParse(_volumeController.text.replaceAll(',', '.'));
-    final concentracao = double.tryParse(
-      _concentrationController.text.replaceAll(',', '.'),
-    );
 
-    if (volume != null && concentracao != null) {
-      double resultado = (volume * concentracao) / 100;
+    if (volume != null) {
+      double resultado = (volume * 4) + 21;
       setState(() {
         _resultado = resultado;
       });
@@ -45,7 +40,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
           },
         ),
         title: const Text(
-          'Proteinúria de 24h',
+          'FiO2',
           style: TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontWeight: FontWeight.bold,
@@ -60,7 +55,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             // campo volume
             const SizedBox(height: 80),
             const Text(
-              'Volume total da urina de 24h (ml):',
+              'Volume oxigênio (L/min):',
               textAlign: TextAlign.left,
               style: TextStyle(color: Colors.green, fontSize: 16),
             ),
@@ -75,28 +70,10 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
               ),
             ),
 
-            //Campo proteina
-            const SizedBox(height: 40),
-            const Text(
-              'Concentração da proteína urinária (mg/dL):',
-              style: TextStyle(color: Colors.green, fontSize: 16),
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _concentrationController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: Colors.white,
-              ),
-            ),
-
             //Campo resultado
             const SizedBox(height: 40),
             const Text(
-              'Resultado (mg/24h):',
+              'FiO2 (%):',
               style: TextStyle(fontSize: 20, color: Colors.green),
             ),
             const SizedBox(height: 12),

@@ -50,6 +50,12 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
+  flutter_launcher_icons: ^0.13.1
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/app_icon.png"
+
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -91,4 +97,3 @@ flutter:
   assets:
     - assets/logo.png
     - assets/appbar.png
-    

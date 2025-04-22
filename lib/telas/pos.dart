@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Proteinuria24hPage extends StatefulWidget {
-  const Proteinuria24hPage({super.key});
+class PosPage extends StatefulWidget {
+  const PosPage({super.key});
 
   @override
-  State<Proteinuria24hPage> createState() => _Proteinuria24hPageState();
+  State<PosPage> createState() => _PosPageState();
 }
 
-class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
-  final TextEditingController _volumeController = TextEditingController();
-  final TextEditingController _concentrationController =
-      TextEditingController();
+class _PosPageState extends State<PosPage> {
+  final TextEditingController _preController = TextEditingController();
 
   double? _resultado;
 
   void _calcular() {
-    final volume = double.tryParse(_volumeController.text.replaceAll(',', '.'));
-    final concentracao = double.tryParse(
-      _concentrationController.text.replaceAll(',', '.'),
-    );
+    final pre = double.tryParse(_preController.text.replaceAll(',', '.'));
 
-    if (volume != null && concentracao != null) {
-      double resultado = (volume * concentracao) / 100;
+    if (pre != null) {
+      double resultado = pre / 3;
       setState(() {
         _resultado = resultado;
       });
@@ -45,7 +40,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
           },
         ),
         title: const Text(
-          'Proteinúria de 24h',
+          'Correção da uréia',
           style: TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontWeight: FontWeight.bold,
@@ -60,31 +55,13 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             // campo volume
             const SizedBox(height: 80),
             const Text(
-              'Volume total da urina de 24h (ml):',
+              'Resultado da uréia pré (mg/dL):',
               textAlign: TextAlign.left,
               style: TextStyle(color: Colors.green, fontSize: 16),
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: _volumeController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                filled: true,
-                fillColor: Colors.white,
-              ),
-            ),
-
-            //Campo proteina
-            const SizedBox(height: 40),
-            const Text(
-              'Concentração da proteína urinária (mg/dL):',
-              style: TextStyle(color: Colors.green, fontSize: 16),
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _concentrationController,
+              controller: _preController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -96,7 +73,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             //Campo resultado
             const SizedBox(height: 40),
             const Text(
-              'Resultado (mg/24h):',
+              'Resultado corrigido (mg/dL):',
               style: TextStyle(fontSize: 20, color: Colors.green),
             ),
             const SizedBox(height: 12),

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 
-class Proteinuria24hPage extends StatefulWidget {
-  const Proteinuria24hPage({super.key});
+class rpcPage extends StatefulWidget {
+  const rpcPage({super.key});
 
   @override
-  State<Proteinuria24hPage> createState() => _Proteinuria24hPageState();
+  State<rpcPage> createState() => _rpcPageState();
 }
 
-class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
-  final TextEditingController _volumeController = TextEditingController();
-  final TextEditingController _concentrationController =
-      TextEditingController();
+class _rpcPageState extends State<rpcPage> {
+  final TextEditingController _proteinaController = TextEditingController();
+  final TextEditingController _creatininaController = TextEditingController();
 
   double? _resultado;
 
   void _calcular() {
-    final volume = double.tryParse(_volumeController.text.replaceAll(',', '.'));
-    final concentracao = double.tryParse(
-      _concentrationController.text.replaceAll(',', '.'),
+    final proteina = double.tryParse(
+      _proteinaController.text.replaceAll(',', '.'),
+    );
+    final creatinina = double.tryParse(
+      _creatininaController.text.replaceAll(',', '.'),
     );
 
-    if (volume != null && concentracao != null) {
-      double resultado = (volume * concentracao) / 100;
+    if (creatinina != null && proteina != null) {
+      double resultado = proteina / creatinina;
       setState(() {
         _resultado = resultado;
       });
@@ -45,7 +46,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
           },
         ),
         title: const Text(
-          'Proteinúria de 24h',
+          'Relação proteína/creatinina',
           style: TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontWeight: FontWeight.bold,
@@ -60,13 +61,13 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             // campo volume
             const SizedBox(height: 80),
             const Text(
-              'Volume total da urina de 24h (ml):',
+              'Concentração da proteína urinária (mg/dL):',
               textAlign: TextAlign.left,
               style: TextStyle(color: Colors.green, fontSize: 16),
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: _volumeController,
+              controller: _proteinaController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -78,13 +79,13 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             //Campo proteina
             const SizedBox(height: 40),
             const Text(
-              'Concentração da proteína urinária (mg/dL):',
+              'Concentração da creatinina urinária (mg/dL):',
               style: TextStyle(color: Colors.green, fontSize: 16),
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 8),
             TextField(
-              controller: _concentrationController,
+              controller: _creatininaController,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -96,7 +97,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             //Campo resultado
             const SizedBox(height: 40),
             const Text(
-              'Resultado (mg/24h):',
+              'Resultado (mg/mg):',
               style: TextStyle(fontSize: 20, color: Colors.green),
             ),
             const SizedBox(height: 12),
@@ -109,7 +110,7 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                _resultado != null ? _resultado!.toStringAsFixed(0) : '',
+                _resultado != null ? _resultado!.toStringAsFixed(3) : '',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 24, color: Colors.red),
               ),
