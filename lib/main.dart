@@ -1,55 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:labcalc/telas/Proteinuria24h.dart';
+import 'package:labcalc/telas/splashscreen.dart';
+import 'package:labcalc/telas/MenuPage.dart';
 
-void main() => runApp(MyApp());
+// importa outras páginas quando criar
+
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
-  }
-}
-
-// Splash com imagem
-class SplashScreen extends StatefulWidget {
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MenuPrincipal()),
-      );
-    });
-  }
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(105, 187, 147, 1),
-      body: Center(
-        child: Image.asset(
-          'assets/logo.png', // Caminho da imagem
-          width: 300,
-          height: 300,
-        ),
+    return MaterialApp(
+      title: 'LabCalc',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        scaffoldBackgroundColor: const Color(0xFFFFFEEC),
       ),
-    );
-  }
-}
-
-// Tela principal
-class MenuPrincipal extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Menu Principal')),
-      body: Center(child: Text('Bem-vindo ao App!')),
+      initialRoute: '/',
+      routes: {
+        '/': (_) => const SplashScreen(),
+        '/menu': (_) => const MenuPage(),
+        '/pt24': (_) => const Proteinuria24hPage(),
+        // '/rpc': (_) => const RotaDaRPC(),
+        //'/ureia': (_) => const RotaDaUreia(),
+        //'/fio2': (_) => const RotaDaFiO2(),
+      },
     );
   }
 }

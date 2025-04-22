@@ -90,3 +90,5 @@ flutter:
 
   assets:
     - assets/logo.png
+    - assets/appbar.png
+    
