@@ -117,6 +117,13 @@ class _rpcPageState extends State<rpcPage> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(onPressed: _calcular, child: const Text('Calcular')),
+
+            const SizedBox(height: 24),
+            const Text(
+              'A fórmula para o cálculo da relação é: (proteina ÷ creatinina)',
+              style: TextStyle(fontSize: 24, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

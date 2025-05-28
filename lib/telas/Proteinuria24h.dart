@@ -11,7 +11,6 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
   final TextEditingController _volumeController = TextEditingController();
   final TextEditingController _concentrationController =
       TextEditingController();
-
   double? _resultado;
 
   void _calcular() {
@@ -36,35 +35,29 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
         backgroundColor: const Color.fromRGBO(105, 187, 147, 1),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Color.fromARGB(255, 248, 250, 248),
-          ),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
         title: const Text(
           'Proteinúria de 24h',
-          style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // campo volume
-            const SizedBox(height: 80),
+            const SizedBox(height: 40),
             const Text(
               'Volume total da urina de 24h (ml):',
-              textAlign: TextAlign.left,
               style: TextStyle(color: Colors.green, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
             TextField(
               controller: _volumeController,
               keyboardType: TextInputType.number,
@@ -74,15 +67,13 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
                 fillColor: Colors.white,
               ),
             ),
-
-            //Campo proteina
-            const SizedBox(height: 40),
+            const SizedBox(height: 32),
             const Text(
               'Concentração da proteína urinária (mg/dL):',
               style: TextStyle(color: Colors.green, fontSize: 16),
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             TextField(
               controller: _concentrationController,
               keyboardType: TextInputType.number,
@@ -92,19 +83,18 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
                 fillColor: Colors.white,
               ),
             ),
-
-            //Campo resultado
-            const SizedBox(height: 40),
+            const SizedBox(height: 32),
             const Text(
               'Resultado (mg/24h):',
               style: TextStyle(fontSize: 20, color: Colors.green),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             Container(
               width: 200,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Colors.white,
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -116,6 +106,13 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(onPressed: _calcular, child: const Text('Calcular')),
+
+            const SizedBox(height: 24),
+            const Text(
+              'A formula para calculo da proteinúria é: (Volume X proteina ÷ 100)',
+              style: TextStyle(fontSize: 24, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),

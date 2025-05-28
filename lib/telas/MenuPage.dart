@@ -57,7 +57,7 @@ class MenuPage extends StatelessWidget {
           children: [
             _menuButton(context, 'Proteinúria de 24h', '/pt24'),
             _menuButton(context, 'Relação proteína\ncreatinina (RPC)', '/rpc'),
-            _menuButton(context, 'Cálculo de correção\nda uréia pós', '/pos'),
+            //_menuButton(context, 'Cálculo de correção\nda uréia pós', '/pos'),
             _menuButton(context, 'Cálculo de FiO2', '/fio2'),
           ],
         ),

@@ -93,6 +93,12 @@ class _Fio2PageState extends State<Fio2Page> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(onPressed: _calcular, child: const Text('Calcular')),
+            const SizedBox(height: 24),
+            const Text(
+              'A fórmula para o cálcular o FiO2 é: (Volume X 4 + 21)',
+              style: TextStyle(fontSize: 24, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
