@@ -120,8 +120,16 @@ class _rpcPageState extends State<rpcPage> {
 
             const SizedBox(height: 24),
             const Text(
-              'A fórmula para o cálculo da relação é: (proteina ÷ creatinina)',
+              'A fórmula para o cálculo da relação é: (proteina ÷ creatinina)\n',
               style: TextStyle(fontSize: 24, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
+            const Text(
+              'Valores de referência: \nRPC < 0,2 g/g: Valor normal. \nRPC entre 0,2 e 3,5 g/g: Proteinúria moderada; requer investigação adicional. \nRPC > 3,5 g/g: Proteinúria na faixa nefrótica; indica possível síndrome nefrótica .',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 248, 7, 7),
+              ),
               textAlign: TextAlign.center,
             ),
           ],

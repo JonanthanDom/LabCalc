@@ -109,8 +109,16 @@ class _Proteinuria24hPageState extends State<Proteinuria24hPage> {
 
             const SizedBox(height: 24),
             const Text(
-              'A formula para calculo da proteinúria é: (Volume X proteina ÷ 100)',
+              'A formula para calculo da proteinúria é: (Volume X proteina ÷ 100)\n',
               style: TextStyle(fontSize: 24, color: Colors.green),
+              textAlign: TextAlign.center,
+            ),
+            const Text(
+              'Valores de referência: \nProteinúria normal: até 150 mg/24h. \nProteinúria limítrofe: entre 150 e 300 mg/24h. \nProteinúria moderada: entre 300 mg e 3,5 g/24h \nProteinúria nefrótica: acima de 3,5 g/24h. ',
+              style: TextStyle(
+                fontSize: 16,
+                color: Color.fromARGB(255, 252, 0, 0),
+              ),
               textAlign: TextAlign.center,
             ),
           ],
